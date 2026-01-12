@@ -16,13 +16,13 @@ describe Board do
       position = '3'
       before do
         allow(game_board).to receive(:gets).and_return(position)
+        allow(game_board).to receive(:puts)
       end
 
       it 'places symbol in specified location' do
         player = 'X'
         board = game_board.instance_variable_get(:@board)
-        game_board.make_move(player)
-        expect(board[position.to_i]).to eq(player)
+        expect { game_board.make_move(player) }.to change { board[position.to_i] }.to(player)
       end
     end
 
