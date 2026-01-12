@@ -26,8 +26,8 @@ class Game
     swap_turn
   end
 
-  def game_over?
-    @winner = game_board.scan_all
+  def game_over?(board = @game_board.board)
+    @winner = game_board.scan_all(board)
     @winner != ''
   end
 end
